@@ -14,7 +14,7 @@ app = FastAPI(
     version="1.0"
 )
 
-# app.mount("/static", StaticFiles(directory="."), name="static")
+app.mount("/static", StaticFiles(directory="."), name="static")
 
 # MODEL_PATH = Path(__file__).parent / ".saved_summary_model_model"
 
@@ -22,11 +22,13 @@ app = FastAPI(
 # tokenizer = T5Tokenizer.from_pretrained(str(MODEL_PATH), local_files_only=True)
 
 
-MODEL_NAME = "ankitkumaer123/text-summarizer"
+# MODEL_NAME = "ankitkumaer123/text-summarizer"
 
-model = T5ForConditionalGeneration.from_pretrained(MODEL_NAME)
+# model = T5ForConditionalGeneration.from_pretrained(MODEL_NAME)
 
-tokenizer = T5Tokenizer.from_pretrained(MODEL_NAME)
+# tokenizer = T5Tokenizer.from_pretrained(MODEL_NAME)
+model = None
+tokenizer = None
 
 if torch.backends.mps.is_available():
     device = torch.device("mps")
@@ -37,9 +39,20 @@ else:
 
 print("Using Device:", device)
 
-model.to(device)
-model.eval()
+def load_model():
+    global model, tokenizer
 
+    if model is None:
+        model = T5ForConditionalGeneration.from_pretrained(
+            "ankitkumaer123/text-summarizer"
+        )
+
+        tokenizer = T5Tokenizer.from_pretrained(
+            "ankitkumaer123/text-summarizer"
+        )
+
+        model.to(device)
+        model.eval()
 class DialogueInput(BaseModel):
     dialogue: str
 
@@ -50,6 +63,7 @@ def clean_data(text: str) -> str:
     return text.strip()
 
 def summarize_dialogue(dialogue: str) -> str:
+    load_model()
     dialogue = clean_data(dialogue)
     dialogue = "summarize: " + dialogue
 
@@ -87,6 +101,7 @@ def summarize_dialogue(dialogue: str) -> str:
 @app.post("/summarize/")
 async def summarize(data: DialogueInput):
     try:
+        
         summary = summarize_dialogue(data.dialogue)
         return {"summary": summary}
     except Exception as e:
