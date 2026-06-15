@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+transformers
+torch
+sentencepiece
+safetensors
+jinja2
+python-multipart
+huggingface_hub
+huggingface_hub
