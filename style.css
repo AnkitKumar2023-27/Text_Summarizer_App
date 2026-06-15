@@ -1,0 +1,266 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f0eeff;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 680px;
+}
+
+/* ── Purple header band ── */
+.header-band {
+  background: #534AB7;
+  border-radius: 16px 16px 0 0;
+  padding: 2rem 2rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.header-band::before {
+  content: '';
+  position: absolute;
+  top: -30px; right: -30px;
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  background: #7F77DD;
+  opacity: 0.35;
+}
+
+.header-band::after {
+  content: '';
+  position: absolute;
+  bottom: -20px; left: 40px;
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: #3C3489;
+  opacity: 0.4;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #3C3489;
+  color: #CECBF6;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.header-band h1 {
+  font-size: 26px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 4px;
+  position: relative;
+  z-index: 1;
+}
+
+.header-band p {
+  font-size: 13px;
+  color: #AFA9EC;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── White body card ── */
+.body-card {
+  background: #ffffff;
+  border: 1px solid #e0dff8;
+  border-radius: 0 0 16px 16px;
+  padding: 1.75rem 2rem;
+}
+
+/* ── Tip strip ── */
+.desc-strip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #EEEDFE;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 1.25rem;
+}
+
+.desc-strip .icon { font-size: 18px; color: #534AB7; }
+.desc-strip p { font-size: 13px; color: #3C3489; }
+
+/* ── Field label ── */
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b6b80;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ── Textarea ── */
+textarea {
+  width: 100%;
+  min-height: 140px;
+  resize: vertical;
+  padding: 14px;
+  font-family: inherit;
+  font-size: 14px;
+  border: 1.5px solid #AFA9EC;
+  border-radius: 10px;
+  background: #fafaff;
+  color: #1a1a2e;
+  outline: none;
+  line-height: 1.6;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+textarea:focus {
+  border-color: #534AB7;
+  box-shadow: 0 0 0 3px #EEEDFE;
+}
+
+/* ── Buttons ── */
+.btn-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.btn-primary {
+  flex: 1;
+  padding: 11px;
+  font-size: 14px;
+  font-weight: 600;
+  background: #534AB7;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-primary:hover { background: #3C3489; }
+.btn-primary:active { transform: scale(0.98); }
+
+.btn-clear {
+  padding: 11px 16px;
+  font-size: 14px;
+  background: #f4f3ff;
+  color: #6b6b80;
+  border: 1px solid #e0dff8;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btn-clear:hover { background: #e8e6ff; }
+
+/* ── Divider ── */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 1.5rem 0;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #e0dff8;
+}
+
+.divider span {
+  font-size: 11px;
+  color: #b0aed0;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ── Output box (teal) ── */
+.output-box {
+  border-radius: 12px;
+  border: 1.5px solid #9FE1CB;
+  background: #E1F5EE;
+  padding: 1.25rem;
+}
+
+.output-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.output-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #0F6E56;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.copy-btn {
+  font-size: 12px;
+  color: #1D9E75;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+
+.copy-btn:hover { background: #9FE1CB; }
+
+#summary-text {
+  font-size: 14px;
+  color: #085041;
+  line-height: 1.75;
+  min-height: 48px;
+}
+
+/* ── Stats row ── */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 1.25rem;
+}
+
+.stat {
+  background: #f4f3ff;
+  border-radius: 8px;
+  padding: 10px 12px;
+  text-align: center;
+}
+
+.stat-val {
+  font-size: 18px;
+  font-weight: 700;
+  color: #534AB7;
+}
+
+.stat-lbl {
+  font-size: 11px;
+  color: #9996c8;
+  margin-top: 2px;
+}

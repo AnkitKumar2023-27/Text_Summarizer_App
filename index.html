@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AI-powered text summarizer using Hugging Face Transformer">
+  <meta name="keywords" content="text summarizer, AI, Hugging Face, NLP, transformer">
+  <meta name="author" content="Your Name">
+  <title>Text Summarizer — Hugging Face AI</title>
+<link rel="stylesheet" href="/static/style.css"> 
+ <link rel="icon" href="favicon.ico">
+</head>
+<body>
+
+  <div class="wrap">
+
+    <!-- ── Header Band ── -->
+    <div class="header-band">
+      <div class="badge">
+        <span class="badge-dot"></span>
+        Hugging Face Transformer
+      </div>
+      <h1>&#128196; Text Summarizer</h1>
+      <p>Paste your content below and get an AI-powered summary instantly</p>
+    </div>
+
+    <!-- ── Body Card ── -->
+    <div class="body-card">
+
+      <!-- Tip strip -->
+      <div class="desc-strip">
+        <span class="icon">&#128161;</span>
+        <p>Works best with articles, essays, or long paragraphs — 100 words or more.</p>
+      </div>
+
+      <!-- Input label -->
+      <div class="label">
+        <span>&#9998;</span> Your text
+      </div>
+
+      <!-- Textarea -->
+      <textarea
+        id="dialougue-input"
+        placeholder="Paste or write your content here..."
+      ></textarea>
+
+      <!-- Buttons -->
+      <div class="btn-row">
+        <button class="btn-primary" type="button" onclick="handleSubmit()">
+          &#10024; Summarize
+        </button>
+        <button class="btn-clear" type="button" onclick="clearAll()">
+          &#128465; Clear
+        </button>
+      </div>
+
+      <!-- Divider -->
+      <div class="divider">
+        <span>summary output</span>
+      </div>
+
+      <!-- Output box -->
+      <div class="output-box">
+        <div class="output-top">
+          <div class="output-label">&#10003; Result</div>
+          <button class="copy-btn" onclick="copyText()">&#128203; Copy</button>
+        </div>
+        <p id="summary-text">Your summary will appear here after you click Summarize...</p>
+      </div>
+
+      <!-- Stats row -->
+      <div class="stats-row">
+        <div class="stat">
+          <div class="stat-val" id="word-count">0</div>
+          <div class="stat-lbl">Words in</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val" id="char-count">0</div>
+          <div class="stat-lbl">Characters</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val" id="read-time">0s</div>
+          <div class="stat-lbl">Read time</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="/static/script.js"></script>
+
+</body>
+</html>
